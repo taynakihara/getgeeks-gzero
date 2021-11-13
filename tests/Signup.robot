@@ -1,8 +1,8 @@
 *** Settings ***
-Documentation           Signup test suite
+Documentation           Signup test suite - Suite de testes para cadastro de usuários
 
 Resource                ${EXECDIR}/resources/Base.robot
-Resource                ${EXECDIR}/resources/actions/SignupActions.robot
+#Resource                ${EXECDIR}/resources/actions/SignupActions.robot
 
 Test Setup           Star Session
 Test Teardown        End Session

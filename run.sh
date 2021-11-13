@@ -1,5 +1,5 @@
 robot -l NONE -o NONE -r NONE tasks/Delorean.robot      #aqui executa o comando para limpar o BD
-robot -d ./logs -i i_email tests/Login.robot                      #aqui roda os testes da suíte SIGNUP.ROBOT
+robot -d ./logs tests/Login.robot                      #aqui roda os testes da suíte SIGNUP.ROBOT
 
 # extensão "sh" é de arquivos SHELL. Dentro desses arquivos posso simplificar a execução dos testes através de atalhos.
 

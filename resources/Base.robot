@@ -20,7 +20,7 @@ ${TIMEOUT}             5
 
 *** Keywords ***
 Star Session
-    New Browser        chromium        headless=False        slowMo=00:00:00.2
+    New Browser        chromium        headless=False        slowMo=00:00:00.1
     New Page           ${BASE_URL}
 
 End Session

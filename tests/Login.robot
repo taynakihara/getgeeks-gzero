@@ -45,4 +45,35 @@ Incorrect Email
     Go To Login Page
     Fill Credentials    ${user}    #nesse context, essa variável só tem 2 argumentos: email e password;
     Submit Credentials
-    Should Be Type Email    
+    Should Be Type Email
+
+Required Email
+    [Tags]        req_email
+
+    ${user}        Create Dictionary        email=            password=tayna123
+
+    Go To Login Page
+    Fill Credentials    ${user}
+    Submit Credentials
+    Alert Span Should Be    E-mail obrigatório
+
+Required Password
+    [Tags]        req_pass
+
+    ${user}        Create Dictionary        email=taynakihara@heroku.com            password=
+
+    Go To Login Page
+    Fill Credentials    ${user}
+    Submit Credentials
+    Alert Span Should Be    Senha obrigatória
+
+Required Fields
+    [Tags]        req_fields
+
+    @{expected_alerts}        Create List
+    ...                       E-mail obrigatório
+    ...                       Senha obrigatória 
+
+    Go To Login Page
+    Submit Credentials
+    Alerts Spans Should Be    ${expected_alerts}
