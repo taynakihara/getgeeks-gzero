@@ -18,7 +18,7 @@ User Login
     User Should Be Logged In        ${user}
 
 Incorrect Pass
-    [Tags]         i_pass
+    [Tags]         inv_pass
 
     ${user}        Create Dictionary        email=taynakihara@heroku.com        password=senha123
 #a senha está diferente da informada no factory_user_login, em Users.py;
@@ -38,7 +38,7 @@ User Not Found
     Modal Content Should Be        Usuário e/ou senha inválidos.
 
 Incorrect Email
-    [Tags]         i_email
+    [Tags]         inv_email
 
     ${user}        Create Dictionary        email=taynakihara.com.net        password=tayna123
 #a senha está diferente da informada no factory_user_login, em Users.py;
