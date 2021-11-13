@@ -1,7 +1,6 @@
 *** Settings ***
 Documentation            Arquivo BASE do projeto de testes
 
-#organizar por ordem alfabética e por tipos de importação de bibliotecas:
 Library                 Browser
 Library                 Collections
 

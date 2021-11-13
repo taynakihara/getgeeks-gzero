@@ -30,5 +30,5 @@ User Should Be Logged In
     Get Text                        ${element}        equal          ${expected_fullname}
     
 Should Be Type Email
-    Get Property        ${INPUT_EMAIL}        type        equal        email        #me da a propriedade do id=email onde o tipo é igual email
+    Get Property        ${INPUT_EMAIL}        type        equal        email
 
