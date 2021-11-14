@@ -2,16 +2,12 @@ from faker import Faker
 fake = Faker()
 
 
-import bcrypt   #importando o bcrypt
+import bcrypt
 
-def get_hashed_pass(password):      #criando um novo método que recebe o argumento PASSWORD (senha que quero criptografar). Aqui ele recebe a senha não criptogrfada
+def get_hashed_pass(password):
     hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(8))
     return hashed
-#crio uma variável para armazenar todo esse código. Variável "hashed";
-#na sequencia, chamo o módulo bcrypt junto do método hashpw, que é o método que criptografa uma senha;
-#em seguida passo a senho que quero criptografar "(password)" e acrescento o .encode('utf-8) para não dar ruim no código;
-#depois informo o modelo de criptografia "bcrypt.gensalt(8)", onde o 8 é o padrão de criptografia que o dev usou no bcrypt para o nodejs javascript
-#por último, no return, retornamos a senha criptografada
+
 
 def factory_user():
     return {
@@ -38,4 +34,19 @@ def factory_user_login():
         'lastname':'Kihara',
         'email': 'taynakihara@heroku.com',
         'password': 'tayna123'
+    }
+    
+def factory_user_be_geek():
+    return {
+        'name': 'Kim',
+        'lastname': 'Dotcom',
+        'email': 'kim@dotcom.com',
+        'password': 'pwd123',
+        'geek_profile': {
+            'whatsapp': '18981555555',
+            'desc': 'Seu pc está lento? Posso resolver isso pra você. Seja formatando a máquina, reinstalando o sistema operacional Windows ou Linux, realizando a troca de algum hardware ou até mesmo eliminando malwares que estão afetando o desempenho do seu PC!',
+            'printer_repair': 'Sim',
+            'work': 'Remoto',
+            'cost': '100'
+        }
     }

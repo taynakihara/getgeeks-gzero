@@ -22,7 +22,3 @@ User Should Be Registered
 
     Wait For Elements State        ${expected_message}        visible        ${TIMEOUT}
 
-Alert Span Should Be
-    [Arguments]            ${expected_alert}
-
-    Wait For Elements State        css=span[class=error] >> text=${expected_alert}        visible        ${TIMEOUT}

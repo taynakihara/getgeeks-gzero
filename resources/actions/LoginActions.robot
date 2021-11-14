@@ -15,7 +15,7 @@ Fill Credentials
     [Arguments]        ${user}
 
     Fill Text        ${INPUT_EMAIL}           ${user}[email]
-    Fill Text        ${INPUT_PASS}        ${user}[password]
+    Fill Text        ${INPUT_PASS}            ${user}[password]
 
 Submit Credentials
     Click            css=.submit-button >> text=Entrar

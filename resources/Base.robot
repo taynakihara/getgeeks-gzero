@@ -7,6 +7,7 @@ Library                 Collections
 Library                 factories/Users.py
 
 Resource                actions/_SharedActions.robot
+Resource                actions/BeGeekActions.robot
 Resource                actions/LoginActions.robot
 Resource                actions/SignupActions.robot
 
