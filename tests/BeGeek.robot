@@ -10,7 +10,7 @@ Test Teardown        End Session
 Be a Geek
     [Tags]        be_geek
 
-    ${user}        Factory User Be Geek
+    ${user}        Factory User        be_geek
 
     Do Login            ${user}
     Go To Geek Form

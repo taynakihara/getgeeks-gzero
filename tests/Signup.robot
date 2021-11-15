@@ -9,7 +9,7 @@ Test Teardown        End Session
 *** Test Cases ***
 Register a new user
 
-    ${user}        Factory User
+    ${user}        Factory User        faker
 
     Set Suite Variable        ${user}
     
@@ -21,7 +21,7 @@ Register a new user
 Duplicate user
     [Tags]        dup_email
 
-    ${user}                     Factory User
+    ${user}                     Factory User        faker
 
     Add User From Database      ${user}
 
@@ -33,7 +33,7 @@ Duplicate user
 Wrong Email
     [Tags]        attempt_signup
 
-    ${user}                    Factory Wrong Email
+    ${user}                    Factory User         wrong_email
 
     Go To Signup Form
     Fill Signup Form           ${user}
