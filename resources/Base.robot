@@ -24,4 +24,4 @@ Star Session
     New Page           ${BASE_URL}
 
 End Session
-    Take Screenshot
+    Take Screenshot        fullPage=True

@@ -42,6 +42,19 @@ def factory_user (target):
                 'work': 'Remoto',
                 'cost': '100'
             }
+        },
+        'short_desc': {
+            'name': 'tay',
+            'lastname': 'kihara',
+            'email': 'taykihara@gmail.com',
+            'password': 'pwd123',            
+            'geek_profile': {
+                'whatsapp': '21981555555',
+                'desc': 'Formato seu PC!',
+                'printer_repair': 'Não',
+                'work': 'Ambos',
+                'cost': '200'
+            }
         }
     }
     return data[target]
