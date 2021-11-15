@@ -49,7 +49,7 @@ Incorrect Email
 Required Email
     [Tags]        req_email
 
-    ${user}        Create Dictionary        email=            password=tayna123
+    ${user}        Create Dictionary        email=${EMPTY}            password=tayna123
 
     Go To Login Page
     Fill Credentials    ${user}
@@ -59,7 +59,7 @@ Required Email
 Required Password
     [Tags]        req_pass
 
-    ${user}        Create Dictionary        email=taynakihara@heroku.com            password=
+    ${user}        Create Dictionary        email=taynakihara@heroku.com            password=${EMPTY}
 
     Go To Login Page
     Fill Credentials    ${user}
