@@ -19,7 +19,7 @@ ${BASE_URL}            https://getgeeks-tayna.herokuapp.com
 ${TIMEOUT}             5
 
 *** Keywords ***
-Star Session
+Start Session
     New Browser        chromium        headless=False        slowMo=00:00:00.1
     New Page           ${BASE_URL}
 
