@@ -11,7 +11,7 @@ ${long_desc}        Mojibake pode acontecer mesmo sem transferir informação de
 *** Test Cases ***
 Required Fill Be a Geek
     [Tags]            reqf_geek
-    [Template]        Attempt Be a Geek        #faço o login apenas 1x e executo todos os cenários abaixo:
+    [Template]        Attempt Be a Geek
 
     whatsapp            ${EMPTY}                O Whatsapp deve ter 11 digitos contando com o DDD
     whatsapp            18                      O Whatsapp deve ter 11 digitos contando com o DDD
@@ -30,20 +30,16 @@ Attempt Be a Geek
     ${user}            Factory User        attempt_be_geek
 
     Set To Dictionary           ${user}[geek_profile]        ${fields_dictionary}        ${input_field}
-    #essa KW seta o valor em um determinado dicionário, ou seja, vou mexer no dicionário geek_profile
-    #vou alterar o campo (${field}) com o valor que vou passar no argumento ${input_field}
-    #e a mensagem esperada, vou receber no argumento ${output_message}, na KW Alert Span Should Be
 
     Fill Geek Form              ${user}[geek_profile]
     Submit Geek Form
     Alert Span Should Be        ${output_message}
 
-    Take Screenshot            fullPage=True    #colocando essa KW aqui, o robot tira um print no final de cada um desses cenários de tentativa
-    #dessa forma, eu não preciso mais do gancho "Test Teardown End Session", onde executa apenas a ação de tirar o print
+    Take Screenshot            fullPage=True
 
-Start Session For Attempt Be a Geek    #utilizar essa KW no gancho Test Setup, iniciando uma sessão para tentativa de se tornar um geek
+Start Session For Attempt Be a Geek
     ${user}        Factory User        attempt_be_geek
 
-    Start Session                #abre uma sessão do navegador
+    Start Session
     Do Login                    ${user}
     Go To Geek Form
