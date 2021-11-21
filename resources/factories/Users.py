@@ -68,6 +68,32 @@ def factory_user (target):
                 'work': 'Remoto',
                 'cost': '350'
             }
+        },
+        'empty_desc': {
+            'name': 'Dio',
+            'lastname': 'Linux',
+            'email': 'diolinux@gmail.com',
+            'password': 'pwd123',            
+            'geek_profile': {
+                'whatsapp': '21981555555',
+                'desc': '',
+                'printer_repair': 'Não',
+                'work': 'Remoto',
+                'cost': '350'
+            }
+        },
+        'empty_whats': {
+            'name': 'Dio',
+            'lastname': 'Linux',
+            'email': 'diolinux@gmail.com',
+            'password': 'pwd123',            
+            'geek_profile': {
+                'whatsapp': '',
+                'desc': 'Mojibake pode acontecer mesmo sem transferir informação de um computador para outro pois programas diferentes podem estar configurados para usar sistemas de codificação diferentes. As imagens a seguir mostram um problema comum nos laboratórios: um ambient',
+                'printer_repair': 'Não',
+                'work': 'Remoto',
+                'cost': '350'
+            }
         }
     }
     return data[target]
