@@ -8,7 +8,7 @@ Test Teardown         End Session
 
 *** Test Cases ***
 Be a Geek
-    [Tags]        be_geek
+    [Tags]        be_geek        smoke
 
     ${user}        Factory User        be_geek
 

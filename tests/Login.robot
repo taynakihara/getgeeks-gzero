@@ -3,12 +3,13 @@ Documentation            Authotization Test Suite - Login Actions
 
 Resource        ${EXECDIR}/resources/Base.robot
 
-Test Setup           Star Session
+Test Setup           Start Session
 Test Teardown        End Session
 
 *** Test Cases ***
 
 User Login
+    [Tags]            smoke
     ${user}                     Factory User        login
 
     Go To Login Page

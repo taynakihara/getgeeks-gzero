@@ -3,12 +3,12 @@ Documentation           Signup test suite - Suite de testes para cadastro de usu
 
 Resource                ${EXECDIR}/resources/Base.robot
 
-Test Setup           Star Session
+Test Setup           Start Session
 Test Teardown        End Session
 
 *** Test Cases ***
 Register a new user
-
+    [Tags]        smoke
     ${user}        Factory User        faker
 
     Set Suite Variable        ${user}

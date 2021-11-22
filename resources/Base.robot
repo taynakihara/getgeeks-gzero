@@ -20,8 +20,9 @@ ${TIMEOUT}             5
 
 *** Keywords ***
 Start Session
-    New Browser        chromium        headless=False        slowMo=00:00:00.1
-    New Page           ${BASE_URL}
+    New Browser                chromium        headless=False        slowMo=00:00:00.1
+    New Page                   ${BASE_URL}
+    Set Viewport Size          1280    768        #define em qual resolução o navegador será executado
 
 End Session
     Take Screenshot        fullPage=True

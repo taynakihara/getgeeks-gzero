@@ -3,26 +3,25 @@ Documentation            Suite de testes para tentativas de ser um Geek - Attemp
 
 Resource            ${EXECDIR}/resources/Base.robot
 
-Test Setup            Start Session For Attempt Be a Geek
+Suite Setup            Start Session For Attempt Be a Geek
+Test Template          Attempt Be a Geek
 
 *** Variables ***
 ${long_desc}        Mojibake pode acontecer mesmo sem transferir informação de um computador para outro pois programas diferentes podem estar configurados para usar sistemas de codificação diferentes. As imagens a seguir mostram um problema comum nos laboratórios: um ambiente.
 
 *** Test Cases ***
-Required Fill Be a Geek
-    [Tags]            reqf_geek
-    [Template]        Attempt Be a Geek
-
-    whatsapp            ${EMPTY}                O Whatsapp deve ter 11 digitos contando com o DDD
-    whatsapp            18                      O Whatsapp deve ter 11 digitos contando com o DDD
-    whatsapp            999999999               O Whatsapp deve ter 11 digitos contando com o DDD
-    desc                ${EMPTY}                Informe a descrição do seu trabalho
-    desc                Formato seu PC!         A descrição deve ter no minimo 80 caracteres
-    desc                ${long_desc}            A descrição deve ter no máximo 255 caracteres
-    cost                abcde                   Valor hora deve ser numérico
-    cost                1f2r3                   Valor hora deve ser numérico
-    cost                */$%^                   Valor hora deve ser numérico
-    cost                ${EMPTY}                Valor hora deve ser numérico
+Whatsapp vazio                whatsapp            ${EMPTY}                O Whatsapp deve ter 11 digitos contando com o DDD
+Whatsapp somente DDD          whatsapp            18                      O Whatsapp deve ter 11 digitos contando com o DDD
+Whatsapp sem DDD              whatsapp            999999999               O Whatsapp deve ter 11 digitos contando com o DDD
+Desc vazia                    desc                ${EMPTY}                Informe a descrição do seu trabalho
+Desc curta                    desc                Formato seu PC!         A descrição deve ter no minimo 80 caracteres
+Desc longa                    desc                ${long_desc}            A descrição deve ter no máximo 255 caracteres
+Valor hora com letras         cost                abcde                   Valor hora deve ser numérico
+Valor hora alfanumerico       cost                1f2r3                   Valor hora deve ser numérico
+Valor hora chars especiais    cost                */$%^                   Valor hora deve ser numérico
+Valor hora vazio              cost                ${EMPTY}                Valor hora deve ser numérico
+Printer repair vazio          printer_repair      ${EMPTY}                Por favor, informe se você é um Geek Supremo
+Work vazio                    work                ${EMPTY}                Por favor, selecione o modelo de trabalho
 
 *** Keywords ***
 Attempt Be a Geek
