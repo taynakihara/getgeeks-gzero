@@ -4,12 +4,13 @@ Documentation            Arquivo BASE do projeto de testes
 Library                 Browser
 Library                 Collections
 
-Library                 factories/Users.py
+Library                factories/Users.py
+Library                Utils.py
 
-Resource                actions/_SharedActions.robot
-Resource                actions/BeGeekActions.robot
-Resource                actions/LoginActions.robot
-Resource                actions/SignupActions.robot
+Resource               actions/_SharedActions.robot
+Resource               actions/BeGeekActions.robot
+Resource               actions/LoginActions.robot
+Resource               actions/SignupActions.robot
 
 Resource                Database.robot
 Resource                Helpers.robot
@@ -22,7 +23,8 @@ ${TIMEOUT}             5
 Start Session
     New Browser                ${BROWSER}        headless=${HEADLESS}        slowMo=00:00:00
     New Page                   ${BASE_URL}
-    Set Viewport Size          1280    768        #define em qual resolução o navegador será executado
+    Set Viewport Size          1280    768
 
-End Session
-    Take Screenshot        fullPage=True
+After Test
+    ${shot_name}            Screenshot Name
+    Take Screenshot         fullPage=True        filename=${shot_name}

@@ -4,7 +4,7 @@ Documentation            Authotization Test Suite - Login Actions
 Resource        ${EXECDIR}/resources/Base.robot
 
 Test Setup           Start Session
-Test Teardown        End Session
+Test Teardown        After Test
 
 *** Test Cases ***
 

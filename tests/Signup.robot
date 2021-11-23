@@ -4,7 +4,7 @@ Documentation           Signup test suite - Suite de testes para cadastro de usu
 Resource                ${EXECDIR}/resources/Base.robot
 
 Test Setup           Start Session
-Test Teardown        End Session
+Test Teardown        After Test
 
 *** Test Cases ***
 Register a new user

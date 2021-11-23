@@ -4,7 +4,7 @@ Documentation            Suite de testes para funcionalidade Seja um Geek
 Resource            ${EXECDIR}/resources/Base.robot
 
 Test Setup            Start Session
-Test Teardown         End Session
+Test Teardown         After Test
 
 *** Test Cases ***
 Be a Geek
