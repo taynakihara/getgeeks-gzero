@@ -45,7 +45,7 @@ Ator: Aplicação Web, Mobile ou qualquer outro front
 `Dado que o usuário submeteu o formulário de login sem preencher o campo email`
 `Quando faço uma requisição POST para a rota /sessions`
 `Então o status code deve ser igual a 400`
-`E deve retornar a mensagem "Incorrect email"`
+`E deve retornar a mensagem "Required email"`
 
 ### Senha em branco
 
@@ -59,4 +59,4 @@ Ator: Aplicação Web, Mobile ou qualquer outro front
 `Dado que o usuário submeteu o formulário de login sem preencher o campo senha`
 `Quando faço uma requisição POST para a rota /sessions`
 `Então o status code deve ser igual a 400`
-`E deve retornar a mensagem "Incorrect pass"`
+`E deve retornar a mensagem "Required pass"`
