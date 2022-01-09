@@ -387,3 +387,137 @@ End Session
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
 
+# ARQUIVO backend/users/tests/Sessions.robot
+# TESTES DE API
+
+User Session
+    ${payload}        Create Dictionary        email=tay@getgeeks.com        password=tayna123
+    ${headers}        Create Dictionary        Content-Type=aplication/json
+
+# Posso deixar sem o dicionário headers, e passar apenas json=${payload}, invés de data=${payload}, pois a biblioteca Requests tem um argumento chamado json que faz a conversão da informação diretamente para json. Com isso posso apagar headers=${headers}.
+
+    ${response}        POST        ${API_USERS}/Sessions        data=${payload}*       headers=${headers}*
+#o 1º argumento é a rota para onde deve ser enviada a requisição;
+#o 2º argumento é a massa de teste (payload)
+#o 3º argumento é o cabeçalho, que é ${headers}. No thunder client pego de "headers" o content-type
+#Faço uma requisição e guardo esse resultado na variável ${response}.
+
+    Status Should Be        200        ${response}        #Keyword da biblioteca Requests
+#Valida se o Status code é 200 para a requisição que foi armazenada na ${response}
+
+# CONTINUAÇÃO:
+    Status Should Be        200        ${response}
+
+    ${size}        Get Length        ${response.json()}[token]    #conta quantos caracteres contém no [token]
+#criei a variável ${size} e mandei um get lenght para fazer essa contagem.
+
+    ${expected_size}        Convert To Integer        140
+#como o esperado é uma string e o retornado é um número inteiro, fazemos essa conversão
+    Should Be Equal        ${expected_size}                   ${size}
+#140 deve ser o tamanho do token retornado na requisição;
+
+    Should Be Equal        10d                   ${response.json()}[expires_in]
+#espero esse valor (10d) na resposta do json que é retornada no campo "expires_in"
+#pego o nome desse campo no thunder client;
+
+    Log To Console        ${size} --- apagar essa linha de código para pegar o log.
+#colocar um log para pegar o json que ele retorna e entre colchetes o campo que quero pegar
+#depois de pegar o log, pode tirar esse comando.
+
+
+# COMO FICOU DEPOIS DE REFATORADO, ACRESCENTANDO O CENÁRIO INCORRECT PASS:
+
+User Session
+    ${payload}        Create Dictionary        email=tay@getgeeks.com        password=tayna123
+    
+    ${response}        POST        ${API_USERS}/sessions        json=${payload}        expected_status=any
+
+    Status Should Be       200                        ${response}
+
+    ${size}                Get Length                 ${response.json()}[token]
+    ${expected_size}        Convert To Integer        140
+
+    Should Be Equal        ${expected_size}           ${size}
+    Should Be Equal        10d                        ${response.json()}[expires_in]
+
+Incorrect Pass
+    ${payload}        Create Dictionary        email=tay@getgeeks.com        password=tayna321
+    
+    ${response}        POST        ${API_USERS}/sessions        json=${payload}        expected_status=any  
+#para a library RequestsLibrary, por padrão, se o status retornado for diferente de 200, o teste vai falhar. Adicionando esse argumento (expected_message=any), o robot ignora o erro, deixando de retornar FALHA nos testes.
+
+    Status Should Be       401                         ${response}
+    Should Be Equal        Unauthorized                ${response.json()}[error]
+
+# TODOS OS CENÁRIOS DE TENTATIVAS DE LOGIN, TESTANDO APIs:
+
+# User session
+    ${payload}        Create Dictionary        email=tay@getgeeks.com        password=tayna123
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       200                        ${response}
+
+    ${size}                Get Length                 ${response.json()}[token]
+    ${expected_size}       Convert To Integer         140
+
+    Should Be Equal        ${expected_size}           ${size}
+    Should Be Equal        10d                        ${response.json()}[expires_in]
+
+# Incorrect pass
+    ${payload}        Create Dictionary        email=tay@getgeeks.com        password=tayna321
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       401                         ${response}
+    Should Be Equal        Unauthorized                ${response.json()}[error]
+
+# User not found
+    ${payload}        Create Dictionary        email=tay@404.com        password=tayna321
+   
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       401                         ${response}
+    Should Be Equal        Unauthorized                ${response.json()}[error]
+
+# Incorrect email
+    ${payload}        Create Dictionary        email=tay.com.br        password=tayna321
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       400                         ${response}
+    Should Be Equal        Incorrect email             ${response.json()}[error]
+
+# Empty email
+    ${payload}        Create Dictionary        email=${EMPTY}        password=tayna321
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       400                         ${response}
+    Should Be Equal        Required email              ${response.json()}[error]
+
+# Without email
+    ${payload}        Create Dictionary                password=tayna321
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       400                         ${response}
+    Should Be Equal        Required email              ${response.json()}[error]
+
+# Empty pass
+    ${payload}        Create Dictionary        email=tay@getgeeks.com        password=${EMPTY}
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       400                         ${response}
+    Should Be Equal        Required pass               ${response.json()}[error]
+
+# Without pass
+    ${payload}        Create Dictionary         email=tay@getgeeks.com
+    
+    ${response}        POST Session    ${payload}
+
+    Status Should Be       400                         ${response}
+    Should Be Equal        Required pass               ${response.json()}[error]
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
