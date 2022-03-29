@@ -17,9 +17,12 @@ Resource           ${EXECDIR}/resources/Base.robot
 *** Test Cases ***
 
 User session
-    &{payload}        Create Dictionary        email=tay@getgeeks.com        password=tayna123
+    &{payload}        Factory User Session        signup 
+    POST User    ${payload}
+
+    &{payload}        Factory User Session        login
     
-    ${response}        POST Session    ${payload}
+    ${response}       POST Session    ${payload}
 
     Status Should Be       200                        ${response}
 
