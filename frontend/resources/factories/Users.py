@@ -10,8 +10,7 @@ def get_hashed_pass(password):
 
 def factory_user (target):
     
-    data = {
-        
+    data = {        
         'faker': {
             'name': fake.first_name(),
             'lastname': fake.last_name(),
@@ -34,7 +33,7 @@ def factory_user (target):
             'name': 'Kim',
             'lastname': 'Dotcom',
             'email': 'kim@dotcom.com',
-            'password': 'pwd123',            
+            'password': 'pwd123',
             'geek_profile': {
                 'whatsapp': '18981555555',
                 'desc': 'Seu pc está lento? Posso resolver isso pra você. Seja formatando a máquina, reinstalando o sistema operacional Windows ou Linux, realizando a troca de algum hardware ou até mesmo eliminando malwares que estão afetando o desempenho do seu PC!',
@@ -46,15 +45,16 @@ def factory_user (target):
         'attempt_be_geek': {
             'name': 'Dio',
             'lastname': 'Linux',
-            'email': 'diolinux@gmail.com',
+            'email': 'dio@linux.com',
             'password': 'pwd123',            
             'geek_profile': {
-                'whatsapp': '21981555555',
-                'desc': 'Mojibake pode acontecer mesmo sem transferir informação de um computador para outro pois programas diferentes podem estar configurados para usar sistemas de codificação diferentes. As imagens a seguir mostram um problema comum nos laboratórios: um ambient',
+                'whatsapp': '11999999999',
+                'desc': 'Seu pc está lento? Posso resolver isso pra você. Seja formatando a máquina, reinstalando o sistema operacional Windows ou Linux, realizando a troca de algum hardware ou até mesmo eliminando malwares que estão afetando o desempenho do seu PC!',
                 'printer_repair': 'Não',
                 'work': 'Remoto',
-                'cost': '350'
+                'cost': '120'
             }
+
         }
     }
     return data[target]

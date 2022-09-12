@@ -25,10 +25,10 @@ Work vazio                    work                ${EMPTY}                Por fa
 
 *** Keywords ***
 Attempt Be a Geek
-    [Arguments]        ${fields_dictionary}        ${input_field}        ${output_message}
+    [Arguments]        ${key}        ${input_field}        ${output_message}
     ${user}            Factory User        attempt_be_geek
 
-    Set To Dictionary           ${user}[geek_profile]        ${fields_dictionary}        ${input_field}
+    Set To Dictionary           ${user}[geek_profile]        ${key}        ${input_field}
 
     Fill Geek Form              ${user}[geek_profile]
     Submit Geek Form

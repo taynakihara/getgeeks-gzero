@@ -34,3 +34,4 @@ Users Seed
 
     ${user3}        Factory User       attempt_be_geek
     Insert User    ${user3}
+    
